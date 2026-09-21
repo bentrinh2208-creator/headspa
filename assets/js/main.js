@@ -1,5 +1,8 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+function safeGet(key) { try { return localStorage.getItem(key); } catch { return null; } }
+function safeSet(key, value) { try { localStorage.setItem(key, value); } catch {} }
+
 /* ---------- MOBILE NAV ---------- */
 const header = document.querySelector('.site-header');
 const navToggle = document.getElementById('navToggle');
@@ -122,7 +125,7 @@ const wheelNote = document.getElementById('wheelNote');
 const STORAGE_KEY = 'headspa_wheel_result';
 
 function renderExistingResult() {
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved = safeGet(STORAGE_KEY);
   if (!saved) return;
   const data = JSON.parse(saved);
   spinBtn.disabled = true;
@@ -135,7 +138,7 @@ let spinning = false;
 wheelForm.addEventListener('submit', e => {
   e.preventDefault();
   if (spinning) return;
-  if (localStorage.getItem(STORAGE_KEY)) {
+  if (safeGet(STORAGE_KEY)) {
     wheelNote.textContent = 'Anh/chị chỉ được quay 1 lần trên thiết bị này.';
     wheelNote.classList.add('error');
     return;
@@ -162,7 +165,7 @@ wheelForm.addEventListener('submit', e => {
   setTimeout(() => {
     const code = genPromoCode();
     const result = { name, phone, discount: seg.discount, jackpot: !!seg.jackpot, code, at: Date.now() };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(result));
+    safeSet(STORAGE_KEY, JSON.stringify(result));
 
     document.getElementById('modalIcon').textContent = seg.jackpot ? '🏆' : '🎉';
     document.getElementById('modalTitle').textContent = seg.jackpot ? 'Trúng thưởng lớn!' : 'Chúc mừng!';
@@ -199,9 +202,9 @@ bookingForm.addEventListener('submit', e => {
     note: document.getElementById('bNote').value.trim(),
   };
 
-  const bookings = JSON.parse(localStorage.getItem('headspa_bookings') || '[]');
+  const bookings = JSON.parse(safeGet('headspa_bookings') || '[]');
   bookings.push({ ...data, at: Date.now() });
-  localStorage.setItem('headspa_bookings', JSON.stringify(bookings));
+  safeSet('headspa_bookings', JSON.stringify(bookings));
 
   document.getElementById('bookingModalDesc').textContent =
     `${data.name} — ${data.service} vào ${data.date} lúc ${data.time}. Spa sẽ gọi điện xác nhận qua số ${data.phone}.`;
