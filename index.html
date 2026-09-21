@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serene Head Spa — Đặt lịch chăm sóc da đầu &amp; thư giãn</title>
+<meta name="description" content="Serene Head Spa - không gian gội đầu dưỡng sinh, trị liệu da đầu chuyên sâu. Đặt lịch ngay và quay vòng quay may mắn nhận ưu đãi đến 20%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="brand">Serene <span>Head Spa</span></a>
+    <nav class="nav" id="nav">
+      <a href="#video">Trải nghiệm</a>
+      <a href="#services">Dịch vụ</a>
+      <a href="#wheel">Vòng quay may mắn</a>
+      <a href="#booking">Đặt lịch</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+    <a href="#booking" class="btn btn-primary btn-small nav-cta">Đặt lịch ngay</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="">
+      <source src="assets/videos/clip-1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="eyebrow">Không gian dưỡng sinh cho da đầu &amp; tâm trí</p>
+      <h1>Thư giãn trọn vẹn,<br>tái tạo từ gốc tóc</h1>
+      <p class="hero-desc">Head spa chuẩn Nhật – Hàn giữa lòng thành phố. Gội đầu dưỡng sinh, trị liệu da đầu chuyên sâu và massage thư giãn giúp anh/chị lấy lại năng lượng sau những ngày bận rộn.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Đặt lịch hẹn</a>
+        <a href="#wheel" class="btn btn-outline">Quay số nhận ưu đãi</a>
+      </div>
+    </div>
+    <a href="#video" class="scroll-hint" aria-label="Cuộn xuống">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- VIDEO / INSPIRATION -->
+  <section class="section" id="video">
+    <div class="container">
+      <p class="section-eyebrow">Truyền cảm hứng</p>
+      <h2 class="section-title">Cảm nhận không gian Serene</h2>
+      <p class="section-desc">Ba khoảnh khắc thật tại spa — để anh/chị hình dung trước trải nghiệm đang chờ đón.</p>
+
+      <div class="video-grid">
+        <article class="video-card">
+          <video class="clip" muted loop playsinline preload="metadata">
+            <source src="assets/videos/clip-1.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Phát video">▶</button>
+          <div class="video-caption">
+            <h3>Gội đầu dưỡng sinh</h3>
+            <p>Nghi thức mở đầu giúp thư giãn toàn bộ vùng đầu, cổ, vai gáy.</p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <video class="clip" muted loop playsinline preload="metadata">
+            <source src="assets/videos/clip-2.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Phát video">▶</button>
+          <div class="video-caption">
+            <h3>Trị liệu da đầu</h3>
+            <p>Soi da đầu, loại bỏ bã nhờn và phục hồi nang tóc từ sâu bên trong.</p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <video class="clip" muted loop playsinline preload="metadata">
+            <source src="assets/videos/clip-3.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Phát video">▶</button>
+          <div class="video-caption">
+            <h3>Không gian thư giãn</h3>
+            <p>Ánh sáng dịu, hương thơm thảo mộc — nơi thời gian như chậm lại.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-alt" id="services">
+    <div class="container">
+      <p class="section-eyebrow">Menu dịch vụ</p>
+      <h2 class="section-title">Chăm sóc theo từng nhu cầu</h2>
+      <p class="section-desc">Giá tham khảo, có thể thay đổi theo độ dài/tình trạng tóc. Vui lòng liên hệ để được tư vấn chính xác.</p>
+
+      <div class="services-tabs" id="serviceTabs">
+        <button class="tab-btn active" data-tab="signature">Head Spa</button>
+        <button class="tab-btn" data-tab="scalp">Da đầu</button>
+        <button class="tab-btn" data-tab="hair">Tóc</button>
+        <button class="tab-btn" data-tab="combo">Combo</button>
+      </div>
+
+      <div class="services-panels">
+        <div class="service-panel active" data-panel="signature">
+          <div class="service-row">
+            <div class="service-info"><h4>Head Spa Cơ Bản</h4><p>60 phút · Gội, massage da đầu, xông hơi</p></div>
+            <div class="service-price">350.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Head Spa Chuyên Sâu</h4><p>90 phút · Kèm mặt nạ da đầu &amp; massage vai gáy</p></div>
+            <div class="service-price">550.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Head Spa Thảo Dược</h4><p>75 phút · Tinh dầu thảo mộc thư giãn sâu</p></div>
+            <div class="service-price">480.000đ</div>
+          </div>
+        </div>
+
+        <div class="service-panel" data-panel="scalp">
+          <div class="service-row">
+            <div class="service-info"><h4>Tẩy Tế Bào Chết Da Đầu</h4><p>45 phút · Làm sạch sâu nang tóc</p></div>
+            <div class="service-price">300.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Trị Liệu Da Đầu Dầu / Khô</h4><p>60 phút · Cân bằng tuyến bã nhờn</p></div>
+            <div class="service-price">420.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Soi Da Đầu &amp; Tư Vấn</h4><p>20 phút · Kiểm tra tình trạng, tư vấn liệu trình</p></div>
+            <div class="service-price">Miễn phí</div>
+          </div>
+        </div>
+
+        <div class="service-panel" data-panel="hair">
+          <div class="service-row">
+            <div class="service-info"><h4>Phục Hồi Tóc Hư Tổn</h4><p>60 phút · Phục hồi cấu trúc tóc chuyên sâu</p></div>
+            <div class="service-price">450.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Ủ Tóc Collagen</h4><p>45 phút · Bổ sung độ ẩm, tăng độ bóng</p></div>
+            <div class="service-price">380.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Phủ Bạc / Nhuộm Che Bạc</h4><p>Theo độ dài tóc</p></div>
+            <div class="service-price">Từ 400.000đ</div>
+          </div>
+        </div>
+
+        <div class="service-panel" data-panel="combo">
+          <div class="service-row">
+            <div class="service-info"><h4>Combo Thư Giãn</h4><p>90 phút · Head Spa + Massage vai gáy</p></div>
+            <div class="service-price">600.000đ</div>
+          </div>
+          <div class="service-row">
+            <div class="service-info"><h4>Combo Dưỡng Sinh Trọn Gói</h4><p>120 phút · Head Spa + Trị liệu da đầu + Ủ tóc</p></div>
+            <div class="service-price">850.000đ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUCKY WHEEL -->
+  <section class="section" id="wheel">
+    <div class="container wheel-layout">
+      <div class="wheel-copy">
+        <p class="section-eyebrow">Ưu đãi hôm nay</p>
+        <h2 class="section-title">Vòng quay may mắn</h2>
+        <p class="section-desc">Mỗi khách được <strong>1 lượt quay miễn phí</strong>. Phần thưởng từ 5–20% giảm giá, và có cơ hội trúng <strong>MIỄN PHÍ 1 dịch vụ</strong> (tỉ lệ hiếm, khoảng 1/100 lượt quay).</p>
+        <ul class="wheel-rules">
+          <li>Nhập tên &amp; số điện thoại để quay.</li>
+          <li>Mỗi khách hàng chỉ được quay <strong>1 lần</strong> trên thiết bị này.</li>
+          <li>Ưu đãi áp dụng khi đặt lịch trong vòng 7 ngày.</li>
+        </ul>
+        <form id="wheelForm" class="wheel-form">
+          <input type="text" id="wheelName" placeholder="Họ và tên" required>
+          <input type="tel" id="wheelPhone" placeholder="Số điện thoại" required>
+          <button type="submit" class="btn btn-primary" id="spinBtn">Quay ngay</button>
+        </form>
+        <p class="wheel-note" id="wheelNote"></p>
+      </div>
+
+      <div class="wheel-stage">
+        <div class="wheel-pointer"></div>
+        <div class="wheel-wrap">
+          <canvas id="wheelCanvas" width="440" height="440"></canvas>
+          <div class="wheel-hub">SPIN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section section-alt" id="booking">
+    <div class="container">
+      <p class="section-eyebrow">Đặt lịch</p>
+      <h2 class="section-title">Giữ chỗ cho buổi hẹn của anh/chị</h2>
+      <p class="section-desc">Điền thông tin bên dưới, spa sẽ liên hệ xác nhận trong 30 phút làm việc.</p>
+
+      <form id="bookingForm" class="booking-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="bName">Họ và tên *</label>
+            <input type="text" id="bName" required>
+          </div>
+          <div class="field">
+            <label for="bPhone">Số điện thoại *</label>
+            <input type="tel" id="bPhone" required>
+          </div>
+          <div class="field">
+            <label for="bService">Dịch vụ mong muốn *</label>
+            <select id="bService" required>
+              <option value="">-- Chọn dịch vụ --</option>
+              <option>Head Spa Cơ Bản</option>
+              <option>Head Spa Chuyên Sâu</option>
+              <option>Head Spa Thảo Dược</option>
+              <option>Tẩy Tế Bào Chết Da Đầu</option>
+              <option>Trị Liệu Da Đầu Dầu / Khô</option>
+              <option>Phục Hồi Tóc Hư Tổn</option>
+              <option>Ủ Tóc Collagen</option>
+              <option>Combo Thư Giãn</option>
+              <option>Combo Dưỡng Sinh Trọn Gói</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bDate">Ngày hẹn *</label>
+            <input type="date" id="bDate" required>
+          </div>
+          <div class="field">
+            <label for="bTime">Giờ hẹn *</label>
+            <input type="time" id="bTime" required>
+          </div>
+          <div class="field">
+            <label for="bCode">Mã ưu đãi (nếu có)</label>
+            <input type="text" id="bCode" placeholder="Nhập mã từ vòng quay may mắn">
+          </div>
+        </div>
+        <div class="field field-full">
+          <label for="bNote">Ghi chú</label>
+          <textarea id="bNote" rows="3" placeholder="Tình trạng da đầu, dị ứng, yêu cầu riêng..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large">Xác nhận đặt lịch</button>
+        <p class="form-hint">* Đây là bản demo giao diện — lịch hẹn chưa được gửi đi thực tế.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container contact-layout">
+      <div>
+        <p class="section-eyebrow">Liên hệ</p>
+        <h2 class="section-title">Ghé thăm Serene Head Spa</h2>
+        <ul class="contact-list">
+          <li><strong>Địa chỉ:</strong> 123 Đường Hoa Sen, Quận 1, TP.HCM</li>
+          <li><strong>Hotline:</strong> 090 123 4567</li>
+          <li><strong>Giờ mở cửa:</strong> 9:00 – 21:00 (T2–CN)</li>
+          <li><strong>Email:</strong> hello@serenespa.vn</li>
+        </ul>
+      </div>
+      <div class="map-placeholder">Bản đồ / Google Maps embed</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Serene Head Spa. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- RESULT MODAL -->
+<div class="modal-backdrop" id="wheelModal">
+  <div class="modal">
+    <button class="modal-close" id="wheelModalClose">×</button>
+    <div class="modal-icon" id="modalIcon">🎉</div>
+    <h3 id="modalTitle">Chúc mừng!</h3>
+    <p id="modalDesc"></p>
+    <div class="promo-code" id="modalCode"></div>
+    <button class="btn btn-primary" id="modalToBooking">Đặt lịch ngay</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" id="bookingModalClose">×</button>
+    <div class="modal-icon">✅</div>
+    <h3>Đã ghi nhận lịch hẹn (demo)</h3>
+    <p id="bookingModalDesc"></p>
+    <button class="btn btn-primary" id="bookingModalOk">Đóng</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="videoModal">
+  <div class="modal modal-video">
+    <button class="modal-close" id="videoModalClose">×</button>
+    <video id="videoModalPlayer" controls playsinline></video>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
