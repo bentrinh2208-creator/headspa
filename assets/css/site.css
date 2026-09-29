@@ -142,12 +142,20 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .promise h3 { font-family: var(--sans); font-size: 15px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
 .promise p { margin-top: 4px; font-size: 15px; color: var(--body); }
 
-/* Videos */
+/* Videos — one plays at a time */
 .videos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
-.video-card { margin: 0; position: relative; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--sand); cursor: pointer; }
-.video-card video { width: 100%; height: 100%; object-fit: cover; }
-.video-card::after { content: "Tap for sound"; position: absolute; left: 12px; bottom: 12px; padding: 6px 10px; border-radius: 20px; background: rgba(59, 42, 31, 0.7); color: #fff; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; pointer-events: none; }
-.video-card.has-sound::after { content: "Sound on"; }
+.video-card { margin: 0; position: relative; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--sand); }
+.video-card video { width: 100%; height: 100%; object-fit: cover; transition: filter .3s; }
+.video-card:not(.is-playing) video { filter: brightness(0.72) saturate(0.9); }
+.video-hit { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.video-play { width: 68px; height: 68px; border-radius: 50%; background: rgba(250, 246, 240, 0.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.25); transition: opacity .2s, transform .2s; }
+.video-play svg { width: 26px; height: 26px; fill: var(--accent); margin-left: 4px; }
+.video-card.is-playing .video-play { opacity: 0; transform: scale(0.8); }
+.video-sound { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 20px; background: rgba(59, 42, 31, 0.72); color: #fff; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.video-card.is-playing .video-sound { opacity: 1; }
+.video-sound::after { content: "Tap for sound"; }
+.video-card.has-sound .video-sound::after { content: "Sound on · tap to mute"; }
+.video-nav { display: none; }
 
 /* Benefits */
 .band-img { width: 100%; height: clamp(220px, 26vw, 380px); object-fit: cover; object-position: center 38%; border-radius: 2px; margin-bottom: 40px; }
@@ -234,8 +242,16 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   .reviews { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) 6px; }
   .review { flex: 0 0 min(320px, 84vw); scroll-snap-align: start; padding: 24px; }
   .review blockquote { font-size: 20px; }
-  .videos { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) 6px; max-width: none; }
-  .video-card { flex: 0 0 min(240px, 62vw); scroll-snap-align: start; }
+  .videos { --vw: min(calc(100vw - 2 * var(--gutter)), calc((100svh - 290px) * 9 / 16), 420px); display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: calc(var(--gutter) * -1); padding: 0 calc((100vw - var(--vw)) / 2); max-width: none; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .videos::-webkit-scrollbar { display: none; }
+  .video-card { flex: 0 0 var(--vw); width: var(--vw); scroll-snap-align: center; scroll-snap-stop: always; }
+  .video-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; }
+  .video-arrow { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-3); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; padding: 0; }
+  .video-arrow:disabled { opacity: 0.35; cursor: default; }
+  .video-dots { display: flex; gap: 4px; }
+  .video-dots button { width: 28px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; position: relative; }
+  .video-dots button::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--line-3); transition: width .2s, margin .2s, background .2s; }
+  .video-dots button[aria-current="true"]::before { width: 22px; margin-left: -11px; border-radius: 4px; background: var(--accent); }
   .why-img { min-height: 0; height: 300px; }
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

@@ -208,12 +208,31 @@
         <p class="eyebrow">As seen on social</p>
         <h2 class="h-xl">Brisbane is talking</h2>
       </div>
-      <p class="section-note">Tap a video to watch with sound.</p>
+      <p class="section-note">One video plays at a time. Tap the playing video for sound.</p>
     </div>
-    <div class="videos">
-      <figure class="video-card"><video muted loop playsinline preload="none" poster="assets/video/social-2.jpg" aria-label="Brisbane head spa review video"><source src="assets/video/social-2.mp4" type="video/mp4"></video></figure>
-      <figure class="video-card"><video muted loop playsinline preload="none" poster="assets/video/social-3.jpg" aria-label="Gold Class Head Spa treatment room video"><source src="assets/video/social-3.mp4" type="video/mp4"></video></figure>
-      <figure class="video-card"><video muted loop playsinline preload="none" poster="assets/video/social-1.jpg" aria-label="Guest head spa day video"><source src="assets/video/social-1.mp4" type="video/mp4"></video></figure>
+    <div class="video-stage">
+      <div class="videos" id="videos">
+      <figure class="video-card" data-i="0">
+        <video muted loop playsinline preload="none" poster="assets/video/social-2.jpg" aria-label="Brisbane head spa review video"><source src="assets/video/social-2.mp4" type="video/mp4"></video>
+        <button type="button" class="video-hit" aria-label="Play video 1 of 3"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        <span class="video-sound" aria-hidden="true"></span>
+      </figure>
+      <figure class="video-card" data-i="1">
+        <video muted loop playsinline preload="none" poster="assets/video/social-3.jpg" aria-label="Gold Class Head Spa treatment room video"><source src="assets/video/social-3.mp4" type="video/mp4"></video>
+        <button type="button" class="video-hit" aria-label="Play video 2 of 3"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        <span class="video-sound" aria-hidden="true"></span>
+      </figure>
+      <figure class="video-card" data-i="2">
+        <video muted loop playsinline preload="none" poster="assets/video/social-1.jpg" aria-label="Guest head spa day video"><source src="assets/video/social-1.mp4" type="video/mp4"></video>
+        <button type="button" class="video-hit" aria-label="Play video 3 of 3"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+        <span class="video-sound" aria-hidden="true"></span>
+      </figure>
+      </div>
+      <div class="video-nav">
+        <button type="button" class="video-arrow" id="vidPrev" aria-label="Previous video"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="video-dots" id="vidDots"><button type="button" aria-label="Video 1"></button><button type="button" aria-label="Video 2"></button><button type="button" aria-label="Video 3"></button></div>
+        <button type="button" class="video-arrow" id="vidNext" aria-label="Next video"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
   </div>
 </section>

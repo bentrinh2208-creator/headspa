@@ -26,28 +26,104 @@
     });
   }
 
-  /* ---------- Social videos: play muted when visible, tap for sound ---------- */
-  var cards = document.querySelectorAll('.video-card');
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        var v = e.target.querySelector('video');
-        if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(function () {}); }
-        else { v.pause(); }
-      });
-    }, { threshold: 0.5 });
-    cards.forEach(function (c) { io.observe(c); });
+  /* ---------- Social videos: only one plays at a time ---------- */
+  var section = document.getElementById('social');
+  var track = document.getElementById('videos');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.video-card'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#vidDots button'));
+  var prevBtn = document.getElementById('vidPrev');
+  var nextBtn = document.getElementById('vidNext');
+  var mobileMq = window.matchMedia('(max-width: 900px)');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var active = 0;
+  var inView = false;
+  var userStarted = false; // with reduced motion, wait for a tap before playing
+
+  function videoOf(i) { return cards[i].querySelector('video'); }
+
+  function syncUi() {
+    cards.forEach(function (c, i) {
+      var v = videoOf(i);
+      var playing = i === active && !v.paused;
+      c.classList.toggle('is-playing', playing);
+      c.classList.toggle('has-sound', playing && !v.muted);
+      c.querySelector('.video-hit').setAttribute('aria-label',
+        playing ? (v.muted ? 'Turn sound on' : 'Mute video') : 'Play video ' + (i + 1) + ' of ' + cards.length);
+    });
+    dots.forEach(function (d, i) { d.setAttribute('aria-current', i === active ? 'true' : 'false'); });
+    if (prevBtn) prevBtn.disabled = active === 0;
+    if (nextBtn) nextBtn.disabled = active === cards.length - 1;
   }
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      var v = card.querySelector('video');
-      var turnOn = v.muted;
-      cards.forEach(function (c) { c.querySelector('video').muted = true; c.classList.remove('has-sound'); });
-      if (turnOn) {
-        v.muted = false; v.currentTime = 0; v.play().catch(function () {});
-        card.classList.add('has-sound');
-      }
+
+  function playActive() {
+    cards.forEach(function (c, i) {
+      var v = videoOf(i);
+      if (i !== active) { v.pause(); v.muted = true; }
+    });
+    if (inView && (!reduceMotion || userStarted)) {
+      var v = videoOf(active);
+      v.preload = 'auto';
+      v.play().then(syncUi).catch(syncUi);
+    }
+    syncUi();
+  }
+
+  function scrollToCard(i) {
+    if (!mobileMq.matches || !track) return;
+    var c = cards[i];
+    track.scrollTo({ left: c.offsetLeft - (track.clientWidth - c.clientWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  function setActive(i, fromScroll) {
+    if (i < 0 || i >= cards.length) return;
+    if (i !== active) { videoOf(active).currentTime = 0; }
+    active = i;
+    if (!fromScroll) scrollToCard(i);
+    playActive();
+  }
+
+  cards.forEach(function (card, i) {
+    var v = videoOf(i);
+    v.addEventListener('play', syncUi);
+    v.addEventListener('pause', syncUi);
+    v.addEventListener('volumechange', syncUi);
+    card.querySelector('.video-hit').addEventListener('click', function () {
+      userStarted = true;
+      if (i !== active) { setActive(i); return; }
+      if (v.paused) { inView = true; playActive(); return; }
+      v.muted = !v.muted;
+      if (!v.muted) { v.currentTime = 0; v.play().catch(function () {}); }
+      syncUi();
     });
   });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { userStarted = true; setActive(i); }); });
+  if (prevBtn) prevBtn.addEventListener('click', function () { userStarted = true; setActive(active - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { userStarted = true; setActive(active + 1); });
+
+  // Phone: the card snapped to the centre becomes the playing one
+  var scrollTimer;
+  if (track) {
+    track.addEventListener('scroll', function () {
+      if (!mobileMq.matches) return;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bestD = Infinity;
+        cards.forEach(function (c, i) {
+          var d = Math.abs(c.offsetLeft + c.clientWidth / 2 - mid);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        if (best !== active) setActive(best, true);
+      }, 120);
+    }, { passive: true });
+  }
+
+  // Play only while the section is on screen
+  if (section && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (inView) { playActive(); }
+      else { cards.forEach(function (c, i) { var v = videoOf(i); v.pause(); v.muted = true; }); syncUi(); }
+    }, { threshold: 0.35 }).observe(section);
+  }
+  syncUi();
 })();
