@@ -38,6 +38,57 @@
     });
   }
 
+  /* ---------- Reviews carousel ---------- */
+  (function () {
+    var track = document.getElementById('reviewTrack');
+    if (!track) return;
+    var cards = Array.prototype.slice.call(track.children);
+    var prev = document.getElementById('revPrev');
+    var next = document.getElementById('revNext');
+    var dotsEl = document.getElementById('revDots');
+    var dots = [];
+    function perView() {
+      var w = cards[0].getBoundingClientRect().width;
+      return Math.max(1, Math.round(track.clientWidth / (w + 1)));
+    }
+    function pages() { return Math.max(1, cards.length - perView() + 1); }
+    function current() {
+      var step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+      return Math.min(pages() - 1, Math.round(track.scrollLeft / step));
+    }
+    function go(i) {
+      i = Math.max(0, Math.min(pages() - 1, i));
+      track.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+    }
+    function buildDots() {
+      var n = pages();
+      if (dots.length === n) return;
+      dotsEl.innerHTML = '';
+      dots = [];
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Show review ' + (i + 1));
+        b.addEventListener('click', go.bind(null, i));
+        dotsEl.appendChild(b);
+        dots.push(b);
+      }
+    }
+    function sync() {
+      buildDots();
+      var i = current();
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      prev.disabled = i <= 0;
+      next.disabled = i >= pages() - 1;
+    }
+    prev.addEventListener('click', function () { go(current() - 1); });
+    next.addEventListener('click', function () { go(current() + 1); });
+    var t;
+    track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(sync, 80); }, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+
   /* ---------- FAQ tabs ---------- */
   var faqTabs = Array.prototype.slice.call(document.querySelectorAll('.faq-tabs [role="tab"]'));
   function showFaq(tab, focus) {
