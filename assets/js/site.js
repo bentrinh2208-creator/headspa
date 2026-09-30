@@ -26,6 +26,27 @@
     });
   }
 
+  /* ---------- FAQ tabs ---------- */
+  var faqTabs = Array.prototype.slice.call(document.querySelectorAll('.faq-tabs [role="tab"]'));
+  function showFaq(tab, focus) {
+    faqTabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  faqTabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { showFaq(t); });
+    t.addEventListener('keydown', function (e) {
+      var n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (n === null) return;
+      e.preventDefault();
+      showFaq(faqTabs[(n + faqTabs.length) % faqTabs.length], true);
+    });
+  });
+
   /* ---------- Social videos: only one plays at a time ---------- */
   var section = document.getElementById('social');
   var track = document.getElementById('videos');

@@ -196,8 +196,14 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .hours .hl dd { color: var(--accent); font-weight: 500; }
 
 /* FAQ */
+.faq { max-width: 900px; margin: 0 auto; }
+.faq-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.faq-tabs button { min-height: 44px; padding: 0 22px; border: 1px solid var(--line-3); border-radius: 22px; background: transparent; color: var(--ink); font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.faq-tabs button:hover { border-color: var(--accent); }
+.faq-tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.faq details p a { text-decoration: underline; text-underline-offset: 3px; }
 .faq details { border-top: 1px solid var(--line); padding: 18px 0; }
-.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq-panel details:last-child { border-bottom: 1px solid var(--line); }
 .faq summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 32px; font-size: 18px; font-weight: 500; cursor: pointer; list-style: none; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; font-size: 24px; font-weight: 300; color: var(--accent); flex-shrink: 0; }
@@ -258,6 +264,9 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 
 /* ---------- Phone ---------- */
 @media (max-width: 640px) {
+  .faq-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .faq-tabs button { padding: 6px 4px; font-size: 11px; letter-spacing: 0.06em; line-height: 1.25; border-radius: 22px; }
+  .faq summary { font-size: 16px; }
   body { font-size: 15px; padding-bottom: 76px; }
   .announce { font-size: 12px; gap: 6px; flex-direction: column; }
   .announce-sep { display: none; }
