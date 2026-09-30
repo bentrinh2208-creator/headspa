@@ -159,11 +159,19 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .video-nav { display: none; }
 
 /* Benefits */
-.band-img { width: 100%; height: clamp(300px, 44vw, 640px); object-fit: cover; object-position: center 45%; border-radius: 2px; margin-bottom: 40px; }
-.benefits { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
-.benefits div { border-top: 2px solid var(--accent); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+
+/* Benefits: big photo left, list right */
+.benefits-split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 32px; align-items: center; }
+.benefits-split > * { min-width: 0; }
+.benefits-media { grid-column: 1 / span 6; }
+.benefits-copy { grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 14px; }
+.band-img { width: 100%; height: clamp(520px, 52vw, 760px); object-fit: cover; object-position: 35% center; border-radius: 2px; }
+.benefits { margin-top: 14px; }
+.benefits li { display: grid; grid-template-columns: 56px minmax(0, 1fr); padding: 18px 0; border-top: 1px solid var(--line); }
+.benefits li:last-child { border-bottom: 1px solid var(--line); }
+.benefits span { font-family: var(--serif); font-size: 24px; color: var(--accent); line-height: 1.2; }
 .benefits h3 { font-family: var(--serif); font-size: 26px; line-height: 1.15; }
-.benefits p { font-size: 15px; color: var(--body); }
+.benefits p { margin-top: 4px; font-size: 15px; color: var(--body); }
 
 /* Reviews */
 .rating-box { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; font-size: 15px; }
@@ -248,10 +256,11 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   .menu-btn { display: inline-flex; }
   .site-header.menu-open .nav { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--nude); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 16px; }
   .site-header.menu-open .nav a { padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
+  .benefits-media, .benefits-copy { grid-column: 1 / -1; }
+  .band-img { height: 120vw; max-height: 560px; }
   .reviews { --per: 1; gap: 14px; margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) 4px; scroll-padding-inline: var(--gutter); }
   .review { flex-basis: calc(100vw - 2 * var(--gutter)); padding: 24px; }
   .review blockquote { font-size: 19px; }
@@ -296,9 +305,6 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   .steps { grid-template-columns: 1fr; gap: 10px; }
   .t-body .btn, .promo .btn { align-self: stretch; }
   .extras li { padding: 16px; font-size: 13px; }
-  .benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
-  .benefits h3 { font-size: 22px; }
-  .benefits p { font-size: 14px; }
   .btn-row .btn { flex: 1 1 100%; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
   .footer-base { flex-direction: column; gap: 6px; }
