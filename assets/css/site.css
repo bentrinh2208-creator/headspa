@@ -249,6 +249,16 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .faq details[open] summary::after { content: "−"; }
 .faq details p { margin-top: 10px; font-size: 16px; line-height: 1.7; color: var(--body); }
 
+/* Social icons */
+.socials { display: flex; gap: 10px; }
+.soc { width: 46px; height: 46px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line-3); border-radius: 50%; color: var(--accent); transition: background .2s, color .2s, border-color .2s; }
+.soc:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.soc-ico { width: 21px; height: 21px; }
+.soc-fill { fill: currentColor; }
+.soc-stroke { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.soc-dot { fill: currentColor; stroke: none; }
+.footer-grid .socials { margin: 4px 0 6px; }
+
 /* Footer */
 .site-footer { background: var(--sand); padding-top: 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
 .footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
