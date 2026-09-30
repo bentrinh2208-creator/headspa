@@ -30,7 +30,7 @@ p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 address { font-style: normal; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-[id] { scroll-margin-top: 84px; }
+[id] { scroll-margin-top: 140px; }
 
 .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 10px 16px; z-index: 100; }
 .skip:focus { left: 8px; color: #fff; }
@@ -73,6 +73,16 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .btn-sm { min-height: 44px; padding: 0 18px; }
 .btn-lg { min-height: 56px; padding: 0 34px; font-size: 14px; }
 .btn-solid { background: var(--accent); color: #fff; }
+.btn-glow { position: relative; animation: btn-glow 2.6s ease-in-out infinite; }
+.btn-glow::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 240, 200, 0.55) 50%, transparent 65%); background-size: 300% 100%; background-position: 100% 0;
+  animation: btn-sheen 4s ease-in-out infinite; }
+@keyframes btn-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 55, 0.0), 0 4px 14px rgba(138, 90, 43, 0.25); }
+  50% { box-shadow: 0 0 0 4px rgba(212, 165, 55, 0.22), 0 0 24px 6px rgba(226, 182, 74, 0.55); }
+}
+@keyframes btn-sheen { 0%, 60% { background-position: 100% 0; } 90%, 100% { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .btn-glow, .btn-glow::after { animation: none; } .btn-glow { box-shadow: 0 0 18px 4px rgba(226, 182, 74, 0.45); } }
 .btn-solid:hover { background: var(--accent-dark); color: #fff; }
 .btn-outline { border-color: var(--line-3); color: var(--ink); font-weight: 500; }
 .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
@@ -85,9 +95,9 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .announce { display: flex; justify-content: center; align-items: center; gap: 20px; min-height: 38px; padding: 6px 16px; background: var(--sand); border-bottom: 1px solid var(--line); font-size: 13px; letter-spacing: 0.06em; color: var(--muted); text-align: center; }
 .announce-sep { color: var(--line-3); }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(244, 237, 228, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 84px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 136px; }
 .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-.brand img { height: 56px; width: auto; }
+.brand img { height: 112px; width: auto; }
 .brand-loc { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted); border-left: 1px solid var(--line-2); padding-left: 14px; }
 .nav { display: flex; gap: clamp(20px, 2.6vw, 40px); font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; }
 .nav a { color: var(--ink); white-space: nowrap; padding: 8px 0; }
@@ -97,7 +107,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .menu-btn .ico { width: 20px; height: 20px; }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: min(760px, calc(100vh - 122px)); background: var(--nude); }
+.hero { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: min(760px, calc(100vh - 174px)); background: var(--nude); }
 .hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 64px var(--gutter); max-width: 720px; margin-left: auto; width: 100%; }
 .hero-media { position: relative; overflow: hidden; min-height: 420px; }
 .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
@@ -321,10 +331,10 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   body { font-size: 15px; padding-bottom: 76px; }
   .announce { font-size: 12px; gap: 6px; flex-direction: column; }
   .announce-sep { display: none; }
-  .header-inner { height: 68px; gap: 12px; }
-  .brand img { height: 42px; }
+  .header-inner { height: 100px; gap: 12px; }
+  .brand img { height: 80px; }
   .brand-loc, .hide-mobile { display: none; }
-  [id] { scroll-margin-top: 72px; }
+  [id] { scroll-margin-top: 104px; }
   .hero-media { height: 88vw; max-height: 380px; }
   .hero-ctas .btn { flex: 1 1 100%; }
   .hero-contact { gap: 8px 20px; }
