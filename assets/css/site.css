@@ -55,6 +55,16 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   background: linear-gradient(110deg, #9A6B1C 0%, #D4A537 22%, #F3D27A 38%, #E2B64A 50%, #B07E22 64%, #EDC869 80%, #C18F2C 100%);
   background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 1px 1px rgba(122, 82, 20, 0.35)); animation: star-shine 4.5s ease-in-out infinite; }
+.logo-shine { position: relative; display: inline-block; line-height: 0; }
+.logo-shine::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 248, 225, 0.9) 50%, transparent 62%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;
+  animation: logo-shine 6s ease-in-out infinite; }
+.logo-shine-header::after { -webkit-mask-image: url(../img/logo.png); mask-image: url(../img/logo.png); }
+.logo-shine-footer::after { -webkit-mask-image: url(../img/logo-chermside.png); mask-image: url(../img/logo-chermside.png); }
+@keyframes logo-shine { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .logo-shine::after { display: none; } }
 @keyframes star-shine { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .stars { animation: none; background-position: 40% 0; } }
 
