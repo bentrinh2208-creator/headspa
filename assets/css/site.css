@@ -114,7 +114,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 /* Treatment cards */
 .cards-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 .t-card { display: flex; flex-direction: column; background: var(--card); border: 1px solid #DCCFBB; border-radius: 4px; overflow: hidden; }
-.t-card > img { width: 100%; height: 240px; object-fit: cover; object-position: center 40%; }
+.t-card > img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 40%; }
 .t-card-premium { background: var(--sand); border-color: var(--line-3); }
 .t-body { display: flex; flex-direction: column; gap: 22px; padding: clamp(24px, 3.4vw, 48px); flex-grow: 1; }
 .t-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
@@ -159,7 +159,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .video-nav { display: none; }
 
 /* Benefits */
-.band-img { width: 100%; height: clamp(220px, 26vw, 380px); object-fit: cover; object-position: center 45%; border-radius: 2px; margin-bottom: 40px; }
+.band-img { width: 100%; height: clamp(300px, 44vw, 640px); object-fit: cover; object-position: center 45%; border-radius: 2px; margin-bottom: 40px; }
 .benefits { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
 .benefits div { border-top: 2px solid var(--accent); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; }
 .benefits h3 { font-family: var(--serif); font-size: 26px; line-height: 1.15; }
@@ -283,7 +283,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   .hero-media { height: 88vw; max-height: 380px; }
   .hero-ctas .btn { flex: 1 1 100%; }
   .hero-contact { gap: 8px 20px; }
-  .t-card > img { height: 180px; }
+  .t-card > img { aspect-ratio: 4 / 3; }
   .steps { grid-template-columns: 1fr; gap: 10px; }
   .t-body .btn, .promo .btn { align-self: stretch; }
   .extras li { padding: 16px; font-size: 13px; }
