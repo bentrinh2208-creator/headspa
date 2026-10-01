@@ -200,6 +200,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 
 /* Reviews */
 .rating-box { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; font-size: 15px; }
+.rating-box .btn { margin-top: 12px; }
 .rating-big { font-family: var(--serif); font-size: 44px; line-height: 1.1; }
 .rating-big .stars { font-size: 34px; letter-spacing: 0.06em; }
 .stars-lg { font-size: 26px; letter-spacing: 0.08em; line-height: 1; }
@@ -218,8 +219,6 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .review-tag { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .review blockquote { margin: 0; font-family: var(--serif); font-size: 20px; line-height: 1.5; color: var(--ink); }
 .review figcaption { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid #E6DBCB; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--body); }
-.live { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: #4E8A5B; }
 
 /* Promos */
 .promo { border-radius: 4px; padding: clamp(28px, 3.5vw, 48px); display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
