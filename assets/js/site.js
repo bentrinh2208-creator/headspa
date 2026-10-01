@@ -2,22 +2,7 @@
 (function () {
   'use strict';
 
-  /* ---------- Google rating (update here, or wire to the Places API later) ---------- */
-  // Google rating: refreshed daily by .github/workflows/update-google-rating.yml.
-  // The numbers in index.html are the fallback if this file can't be loaded.
-  function applyRating(g) {
-    if (!g || !g.reviewCount) return;
-    var r = Number(g.rating);
-    var rating = isNaN(r) ? String(g.rating) : r.toFixed(1);
-    document.querySelectorAll('[data-rating]').forEach(function (el) { el.textContent = rating; });
-    document.querySelectorAll('[data-review-count]').forEach(function (el) { el.textContent = g.reviewCount; });
-  }
-  if (window.fetch) {
-    fetch('data/google-rating.json', { cache: 'no-cache' })
-      .then(function (res) { return res.ok ? res.json() : null; })
-      .then(applyRating)
-      .catch(function () {});
-  }
+  /* Google rating and review count are set by hand in index.html (data-rating / data-review-count). */
 
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
