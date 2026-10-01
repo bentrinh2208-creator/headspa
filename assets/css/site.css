@@ -41,6 +41,7 @@ address { font-style: normal; }
 /* Type */
 .eyebrow { font-size: 12px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); }
 h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 84px); line-height: 1.03; }
+.h1-kicker { display: block; margin-bottom: 20px; font-family: var(--sans); font-size: 12px; line-height: 1.6; }
 h1 em { color: var(--accent); }
 h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.08; }
 .h-xl { font-size: clamp(34px, 4.2vw, 58px); }
