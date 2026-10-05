@@ -62,7 +62,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   background-size: 300% 100%; background-position: 100% 0;
   -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;
   animation: logo-shine 6s ease-in-out infinite; }
-.logo-shine-header::after { -webkit-mask-image: url(../img/logo.png); mask-image: url(../img/logo.png); }
+.logo-shine-header::after { -webkit-mask-image: url(../img/logo-chermside.png); mask-image: url(../img/logo-chermside.png); }
 .logo-shine-footer::after { -webkit-mask-image: url(../img/logo-chermside.png); mask-image: url(../img/logo-chermside.png); }
 @keyframes logo-shine { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .logo-shine::after { display: none; } }
@@ -333,7 +333,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   .announce-sep { display: none; }
   .header-inner { height: 100px; gap: 12px; }
   .brand img { height: 80px; }
-  .brand-loc, .hide-mobile { display: none; }
+  .hide-mobile { display: none; }
   [id] { scroll-margin-top: 104px; }
   .hero-media { height: 88vw; max-height: 380px; }
   .hero-ctas .btn { flex: 1 1 100%; }
