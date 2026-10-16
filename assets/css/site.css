@@ -383,26 +383,3 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
-
-/* ---------- What happens (ritual steps) ---------- */
-.ritual-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
-.ritual-step { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.ritual-step img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 999px 999px 4px 4px; }
-.ritual-num { display: flex; align-items: center; gap: 12px; margin: 6px 0 0; font-family: var(--serif); font-size: 22px; color: var(--accent); }
-.ritual-num::after { content: ""; flex: 1; height: 1px; background: var(--line-3); opacity: .6; }
-.ritual-step h3, .after-item h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; line-height: 1.2; }
-.ritual-step p:not(.ritual-num), .after-item p { margin: 0; font-size: 14px; line-height: 1.65; color: var(--body); }
-.ritual-fine { margin-top: 28px; }
-.after-head { margin-top: clamp(56px, 7vw, 96px); }
-.after-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; max-width: 980px; }
-.after-item { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.after-item img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 2px; margin-bottom: 8px; border-bottom: 1px solid var(--line-3); padding-bottom: 0; }
-@media (max-width: 1100px) {
-  .ritual-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
-}
-@media (max-width: 640px) {
-  .ritual-steps, .after-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scrollbar-width: none; }
-  .ritual-steps::-webkit-scrollbar, .after-list::-webkit-scrollbar { display: none; }
-  .ritual-step, .after-item { flex: 0 0 72%; scroll-snap-align: center; }
-  .ritual-step h3, .after-item h3 { font-size: 22px; }
-}
