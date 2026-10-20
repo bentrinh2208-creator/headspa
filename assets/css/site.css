@@ -404,3 +404,7 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
   #ritual .fine { text-align: left; }
 }
 
+
+/* Gift card location tag */
+.gift-only { margin: 4px 0 14px; }
+.gift-only .tag { margin-left: 0; text-transform: uppercase; white-space: normal; line-height: 1.5; color: var(--accent); }
