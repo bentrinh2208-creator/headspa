@@ -196,3 +196,29 @@
   }
   syncUi();
 })();
+
+/* Click tracking for Google Ads (AW-18352468442).
+   Paste conversion labels from Google Ads into CONVERSION_LABELS to count them as conversions. */
+(function () {
+  var ADS_ID = 'AW-18352468442';
+  var CONVERSION_LABELS = { book_click: '', call_click: '', gift_card_click: '', message_click: '' };
+  function kind(href) {
+    if (href.indexOf('book.squareup.com') > -1) return 'book_click';
+    if (href.indexOf('app.squareup.com/gift') > -1) return 'gift_card_click';
+    if (href.indexOf('tel:') === 0) return 'call_click';
+    if (href.indexOf('facebook.com') > -1 || href.indexOf('m.me') > -1 || href.indexOf('instagram.com') > -1) return 'message_click';
+    if (href.indexOf('google.com/maps') > -1 || href.indexOf('maps.google.com') > -1) return 'directions_click';
+    return null;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || typeof window.gtag !== 'function') return;
+    var name = kind(a.getAttribute('href'));
+    if (!name) return;
+    var label = (a.textContent || a.getAttribute('aria-label') || '').trim().slice(0, 60);
+    window.gtag('event', name, { link_url: a.href, link_text: label, transport_type: 'beacon' });
+    if (CONVERSION_LABELS[name]) {
+      window.gtag('event', 'conversion', { send_to: ADS_ID + '/' + CONVERSION_LABELS[name], transport_type: 'beacon' });
+    }
+  }, true);
+})();
