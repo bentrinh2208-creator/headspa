@@ -197,7 +197,7 @@
   syncUi();
 })();
 
-/* Click tracking for Google Ads (AW-18352468442).
+/* Click tracking for GA4 (G-C8R5T9P1HW) and Google Ads (AW-18352468442).
    Paste conversion labels from Google Ads into CONVERSION_LABELS to count them as conversions. */
 (function () {
   var ADS_ID = 'AW-18352468442';
