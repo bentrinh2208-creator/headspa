@@ -212,12 +212,14 @@
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
-    if (!a || typeof window.gtag !== 'function') return;
+    if (!a) return;
     var name = kind(a.getAttribute('href'));
     if (!name) return;
     var label = (a.textContent || a.getAttribute('aria-label') || '').trim().slice(0, 60);
-    window.gtag('event', name, { link_url: a.href, link_text: label, transport_type: 'beacon' });
-    if (CONVERSION_LABELS[name]) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, { link_url: a.href, link_text: label, transport_type: 'beacon' });
+    var META = { book_click: 'Lead', call_click: 'Contact', message_click: 'Contact', gift_card_click: 'InitiateCheckout' };
+    if (typeof window.fbq === 'function' && META[name]) window.fbq('track', META[name], { content_name: label });
+    if (typeof window.gtag === 'function' && CONVERSION_LABELS[name]) {
       window.gtag('event', 'conversion', { send_to: ADS_ID + '/' + CONVERSION_LABELS[name], transport_type: 'beacon' });
     }
   }, true);
