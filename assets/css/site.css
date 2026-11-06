@@ -414,10 +414,3 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 /* Footer privacy note */
 .footer-privacy { padding-bottom: 28px; }
 .footer-privacy p { font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 900px; }
-
-/* Hero v2: keep waterfall halo, neck and shoulders in frame */
-.hero-media img { object-position: 22% 70%; }
-@media (max-width: 640px) {
-  .hero-media { height: 74vw; max-height: 340px; }
-  .hero-media img { object-position: 28% 72%; }
-}
