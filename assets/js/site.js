@@ -201,7 +201,7 @@
    Paste conversion labels from Google Ads into CONVERSION_LABELS to count them as conversions. */
 (function () {
   var ADS_ID = 'AW-18352468442';
-  var CONVERSION_LABELS = { book_click: 'KK-XCMi3trIdENrjka9E', call_click: '', gift_card_click: '', message_click: '' };
+  var CONVERSION_LABELS = { book_click: 'KK-XCMi3trIdENrjka9E', call_click: '', gift_card_click: 'GOoUCO2Y-bUdENrjka9E', message_click: '' };
   function kind(href) {
     if (href.indexOf('book.squareup.com') > -1) return 'book_click';
     if (href.indexOf('app.squareup.com/gift') > -1) return 'gift_card_click';
