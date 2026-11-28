@@ -432,3 +432,11 @@ h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 
 .expect-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 32px; margin: 0; }
 .expect-list dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .expect-list dd { margin: 0; line-height: 1.6; color: var(--body); }
+
+/* Membership page: numbers 100% bigger, same serif font, easy to read */
+.promise-lg li { grid-template-columns: 104px minmax(0, 1fr); align-items: start; }
+.promise-lg span { font-size: 48px; line-height: 1.05; font-variant-numeric: tabular-nums lining-nums; }
+@media (max-width: 640px) {
+  .promise-lg li { grid-template-columns: 80px minmax(0, 1fr); }
+  .promise-lg span { font-size: 38px; }
+}
