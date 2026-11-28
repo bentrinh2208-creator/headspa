@@ -205,6 +205,7 @@
   function kind(href) {
     if (href.indexOf('book.squareup.com') > -1) return 'book_click';
     if (href.indexOf('app.squareup.com/gift') > -1) return 'gift_card_click';
+    if (href.indexOf('square.link/u/6EcARsxp') > -1) return 'membership_click';
     if (href.indexOf('tel:') === 0) return 'call_click';
     if (href.indexOf('facebook.com') > -1 || href.indexOf('m.me') > -1 || href.indexOf('instagram.com') > -1) return 'message_click';
     if (href.indexOf('google.com/maps') > -1 || href.indexOf('maps.google.com') > -1) return 'directions_click';
@@ -217,7 +218,7 @@
     if (!name) return;
     var label = (a.textContent || a.getAttribute('aria-label') || '').trim().slice(0, 60);
     if (typeof window.gtag === 'function') window.gtag('event', name, { link_url: a.href, link_text: label, transport_type: 'beacon' });
-    var META = { book_click: 'Lead', call_click: 'Contact', message_click: 'Contact', gift_card_click: 'InitiateCheckout' };
+    var META = { membership_click: 'Subscribe', book_click: 'Lead', call_click: 'Contact', message_click: 'Contact', gift_card_click: 'InitiateCheckout' };
     if (typeof window.fbq === 'function' && META[name]) window.fbq('track', META[name], { content_name: label });
     if (typeof window.gtag === 'function' && CONVERSION_LABELS[name]) {
       window.gtag('event', 'conversion', { send_to: ADS_ID + '/' + CONVERSION_LABELS[name], transport_type: 'beacon' });
